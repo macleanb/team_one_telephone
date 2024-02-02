@@ -68,6 +68,31 @@ def get_user_contact_menu_choice():
 
     return user_input
 
+def get_internet_menu_choice():
+    """ Gets a menu choice from the user """
+    regex = '[1-5]'
+    console = Console()
+    base_style = Style.parse("cyan")
+
+    valid_input = False
+    while not valid_input:
+        print()
+        console.print(
+            ":mobile_phone:----  INTERNET ----:mobile_phone:",
+            style = base_style + Style(underline=False)
+            )
+        print()
+        print("[bold magenta]Options:[/bold magenta]")
+        print('1.  Open Browser')
+        print('2.  Execute Search')
+        print('3.  View History')
+        print('4.  Browse News')
+        print('5.  Exit Internet')
+        user_input = input('Please enter a menu option (1-5):  ')
+        valid_input = bool(re.fullmatch(regex, user_input))
+
+    return user_input
+
 def display_menu():
     """ This function simulates a telephone menu """
     user_selection = "<>"
@@ -82,11 +107,9 @@ def display_menu():
             case "2":
                 display_contacts_menu()
             case "3":
-                #Team3.search_internet()
-                pass
+                display_internet_menu()
             case "4":
-                #Team4.manage_tasks()
-                pass
+                print('Displaying task manager...')
             case _:
                 pass
 
@@ -97,7 +120,6 @@ def display_contacts_menu():
     """ This function simulates a contacts menu """
     user_selection = -1
 
-    print('here in display contacts menu')
     while int(user_selection) != 7:
         user_selection = get_user_contact_menu_choice()
         print(f'The user entered option {user_selection}')
@@ -146,6 +168,58 @@ def display_contacts_menu():
             case _:
                 pass
 
+
+def display_internet_menu():
+    """ This function simulates an internet menu """
+    user_selection = -1
+
+    while int(user_selection) != 7:
+        user_selection = get_internet_menu_choice()
+        print(f'The user entered option {user_selection}')
+
+        match user_selection:
+            case "1":
+                info = get_contact()
+                add_contact(info[0], info[1])
+                print(f'Added new contact: {info[0]}: {info[1]}')
+            case "2":
+                name = get_user_name()
+                number = get_user_phone_number()
+                result = update_number(name, number)
+                if result is not None:
+                    print(result) # prints any errors
+                else:
+                    print(f'Contact updated: {name}: {whiskey_contacts[name]}')
+            case "3":
+                current_name = get_user_name()
+                new_name = get_user_name()
+                result = update_name(current_name, new_name)
+
+                if result is not None:
+                    print(result) # prints any errors
+                else:
+                    print(f'Contact updated: {new_name}: {whiskey_contacts[new_name]}')
+            case "4":
+                name = get_user_name()
+                result = get_number(name)
+                print()
+                print(result)
+            case "5":
+                name = get_user_name()
+                result = delete_contact(name)
+
+                if result is not None:
+                    print(result) # prints any errors
+                else:
+                    print(f'Contact deleted: {name}')
+            case "6":
+                contacts = get_list_of_contacts()
+                print()
+                print('List of Contacts:')
+                for contact in contacts:
+                    print(contact)
+            case _:
+                pass
 
 def get_user_name():
     """ Gets a user name"""
