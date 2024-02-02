@@ -1,0 +1,17 @@
+old
+node_modules
+images/
+
+# From https://github.com/github/gitignore/blob/main/Python.gitignore
+
+__pycache__/
+
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
