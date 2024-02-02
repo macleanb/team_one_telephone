@@ -21,7 +21,7 @@
 
 ### Team 1 - Create Terminal Phone Menu Interface
 
-1. **Create Feature Branch:**
+1. **Create Feature Branch:** 
 
     ```bash
     git checkout -b feature-terminal-menu
