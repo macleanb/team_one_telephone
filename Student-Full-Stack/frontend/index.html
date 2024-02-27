@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School</title>
+    <script src="./app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>School</h1>
+    </header>
+    <main>
+        <h3>Students</h3>
+        <button onclick="getStudents()">Get Students</button>
+        <ul id="studentContainer">
+
+        </ul>
+        <form onsubmit="addStudent(event)">
+            <input name="first_name" type="text" placeholder="First Name"/>
+            <input name="last_name" type="text" placeholder="Last Name"/>
+            <input name="age" type="number" />
+            <input name="subject" type="subject" placeholder="Subject"/>
+            <input type="submit"/>
+        </form>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+</body>
+</html>
